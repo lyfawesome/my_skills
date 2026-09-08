@@ -1,0 +1,4 @@
+interface:
+  display_name: "中国发明专利撰写"
+  short_description: "从技术披露到附图、权利要求及代理格式交付的完整流程"
+  default_prompt: "Use $cn-invention-patent-drafting to turn my technical disclosure into a review-ready Chinese invention patent package."

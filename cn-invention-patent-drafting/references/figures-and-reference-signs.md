@@ -4,16 +4,16 @@ Read this reference before creating, revising, or renumbering patent drawings.
 
 ## Give each figure one distinct job
 
-Do not draw the same process twice under different titles. A useful software or engineering patent set may include:
+Do not draw the same process twice under different titles. Depending on the disclosed invention, a useful figure set may include:
 
 - a system architecture showing modules, shared stores, system boundary, and external interfaces;
 - a method flow showing temporal order, decisions, loops, and method-step identifiers;
-- a data-model graph showing node and edge types;
-- an evidence-to-model mapping;
-- a validation and repair loop;
-- a solver-adapter and source-mapping relationship;
-- a concrete mechanism or topology embodiment;
-- a diagnostic backtrace.
+- a data, state, component, material, or relationship model;
+- a processing, decision, control, or transformation relationship;
+- a validation, feedback, retry, or repair loop;
+- a communication, synchronization, or source-mapping relationship;
+- a concrete structure, mechanism, topology, circuit, process, or embodiment;
+- an error, diagnostic, or traceability relationship.
 
 A system diagram and a method flow may cover the same invention but must answer different questions: “what components exchange what data?” versus “what happens in what order?”. State this distinction in the prose when readers could confuse them.
 

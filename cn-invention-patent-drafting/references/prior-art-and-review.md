@@ -1,55 +1,105 @@
-# Prior-art search and iterative review
+# Prior-art search and patentability review
 
-Read this reference for a full patent package, a novelty search, or an adversarial patentability review.
+Read this reference for a full patent package, novelty search, inventive-step review, claim strategy, or adversarial patentability review.
+
+## Scope and confidentiality
+
+Record the search jurisdiction, databases, date, language, technology range, document cutoff, and known limits. Use abstracted minimum-necessary query features when the invention is unpublished. Do not upload the complete confidential disclosure to a public search service without explicit authorization.
+
+Distinguish:
+
+- patentability-oriented prior-art searching;
+- legal-status and family verification;
+- freedom-to-operate or infringement analysis, which is a different task and must not be implied by a patentability search.
 
 ## Source hierarchy
 
-Use current sources. Prefer official patent databases for bibliographic data, family data, prosecution status, and claim text. Patent aggregators are useful discovery tools but not the final authority for Chinese legal status. For non-patent literature, prefer the original paper, standard, product manual, or project documentation.
+Use current sources. Prefer official patent databases for bibliographic data, family data, procedural or legal status, priority data, and claim text. Aggregators are useful discovery tools but not the final authority for Chinese status. For non-patent literature, prefer the original paper, standard, product manual, repository, or project documentation.
 
-Record at least the publication number, title, priority or filing date when available, publication date, relevant claim or passage, and the feature it discloses. Distinguish a search lead from a verified disclosure.
+For each close reference, record at least:
+
+- publication number and title;
+- applicant or assignee when relevant;
+- priority, filing, and publication dates as available;
+- family or related application needed to understand the disclosure;
+- relevant independent claim and enabling paragraph, figure, equation, code, or manual passage;
+- the exact feature or relationship disclosed;
+- whether it is a search lead or verified disclosure;
+- verification source and access date.
+
+Do not treat an abstract, generated summary, title similarity, or search snippet as final proof of disclosure.
 
 ## Search construction
 
-Build several intersecting concept groups instead of searching the proposed title only:
+Build intersecting concept groups from the actual invention:
 
-- application domain and physical object;
-- input representation or human interaction;
-- intermediate representation, graph, schema, or compiler;
-- validation, consistency, rank, residual, or diagnostic mechanism;
-- execution target, solver, adapter, or generated model;
-- repair, traceability, provenance, feedback, or reproducibility.
+- technical object, operating environment, and application domain;
+- technical problem or failure mode;
+- input source, signal, data structure, material, state, or measured quantity;
+- indispensable transformation, state transition, equation, control relationship, architecture, or workflow dependency;
+- intermediate representation or technical interaction;
+- output, controlled action, or changed technical state;
+- asserted technical effect and its causal mechanism;
+- alternative terminology, Chinese and English synonyms, older terminology, acronyms, and likely IPC/CPC classes;
+- adjacent technical fields that could supply the same mechanism.
 
-Search Chinese and English synonyms, claim-style phrases, and likely neighboring fields. Review independent claims and enabling passages, not abstracts alone.
+Search claim-style relationships and combinations, not only the proposed title. For algorithms, separate the mathematical label from the technical input/output and implementation relationship. For workflows, search state transitions, messages, triggers, constraints, and failure behavior rather than only industry names.
 
 ## Comparison matrix
 
-For each close reference, compare:
+Compare each independent-claim limitation, including relationships and ordering. Use at least:
 
-1. input and evidence representation;
-2. model or intermediate data structure;
-3. deterministic validation;
-4. repair scope and control;
-5. target-system adaptation;
-6. execution feedback and traceability;
-7. resulting technical effect.
+| Limitation | Applicant support | Reference passage | Express / inherent / absent / uncertain | Difference | Technical consequence | Risk |
+|---|---|---|---|---|---|---|
 
-Mark each feature as expressly disclosed, necessarily implied, absent, or uncertain. Do not treat a broad goal as disclosure of a specific mechanism.
+Do not treat a broad goal, similar result, or same algorithm name as disclosure of a specific mechanism. Conversely, do not claim difference based only on renamed objects, changed application labels, or wording when the technical relationship is the same.
+
+## Novelty analysis
+
+Evaluate whether one verified reference discloses every limitation of the claim directly or inherently in the required relationship. Do not assemble multiple references to create a novelty rejection. State uncertainty where a passage, date, or necessary implication has not been verified.
+
+“No exact match found” is not a novelty conclusion. Report the search limits and residual risk.
 
 ## Inventive-step attack
 
-Construct the strongest plausible examiner combination. Explain why the skilled person would or would not combine the references, what technical obstacle remains, and whether the claimed features interact to create a joint effect. Avoid arguing only that no single reference contains every word.
+Construct the strongest plausible combination using the closest reference and neighboring knowledge. Analyze:
 
-## Eight-pass record
+- the distinguishing limitations that actually contribute to the technical solution;
+- the objective technical problem supported by those differences;
+- motivation or technical teaching to combine;
+- compatibility, implementation obstacles, and contrary teaching;
+- whether the combination would preserve the claimed relationship and effect;
+- whether a feature is merely a field label, business rule, presentation choice, arbitrary parameter, or routine substitution;
+- whether the contributing feature is present in the claim rather than only in the description;
+- the joint effect of interacting differences.
 
-Use these default passes for a filing-ready package:
+Avoid arguing only that no single reference contains every word or that the application field is different.
 
-1. identify anticipation and remove already-public macro concepts from the alleged core;
-2. anchor algorithms in a concrete technical process, data relationship, equation assembly, solver execution, or hardware operation;
-3. test obvious combinations using the closest reference plus neighboring techniques;
-4. add definitions, schemas, thresholds, error handling, and embodiments needed for reproducibility;
-5. remove relative or result-only terms and repair claim antecedents;
-6. build dependent-claim fallback layers without importing unnecessary implementation details into the independent claim;
-7. check unity, category support, and consistency among method, system, device, medium, and program-product claims;
-8. audit all deliverables, dates, terminology, numbering, citations, placeholders, and formal figures.
+## Blocking decision gate
 
-End with residual risks and applicant actions. Never state that authorization is guaranteed.
+Pause before materially changing the inventive core when:
+
+- a verified reference appears to disclose the indispensable feature combination;
+- a plausible combination removes the alleged technical contribution;
+- an earlier public disclosure may control filing strategy;
+- the remaining distinction is only a use, label, desired result, data name, or unsupported effect;
+- avoiding the art would require adding a feature that lacks applicant support.
+
+Present supported options:
+
+- continue with the documented risk;
+- narrow to a supported technical distinction;
+- refocus on a different disclosed mechanism;
+- split distinct inventive concepts;
+- obtain more technical facts or evidence;
+- pause and seek patent-professional advice.
+
+Do not silently invent a distinction, replace the invention, or narrow the claim merely to produce a positive conclusion.
+
+An applicant choice to continue with known risk preserves the working record but does not automatically close a `BLOCKER` or `MAJOR` finding or qualify the package for submission-stage status. Apply the minimum severity and independent closure rules in `independent-review.md`.
+
+## Iterative review record
+
+For a full package, integrate the prior-art findings with the independent review. Record the defect, evidence, revision, scope effect, applicant decision when required, and residual risk. Re-run the feature comparison after any material independent-claim change.
+
+End with search limits and residual risks. Never state that authorization, validity, or freedom to operate is guaranteed.

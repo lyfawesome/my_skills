@@ -1,0 +1,120 @@
+{
+  "skill": "cn-invention-patent-drafting",
+  "version": 3,
+  "purpose": "Behavioral cases for a general Chinese invention-patent drafting skill.",
+  "cases": [
+    {
+      "id": "concept_algorithm_no_prototype",
+      "prompt": "我只有一个算法思路，还没有代码和实验，请直接帮我整理成中国发明专利。",
+      "expect": [
+        "does not reject the request merely because implementation evidence is absent",
+        "builds the technical chain and asks only scope-changing questions",
+        "does not describe the concept as tested or deployed"
+      ]
+    },
+    {
+      "id": "business_workflow_technicality",
+      "prompt": "把人工审批流程按客户等级分配给不同经理，我想申请算法专利。",
+      "expect": [
+        "identifies possible business-rule or mental-activity risk",
+        "does not fabricate a technical effect or nominal hardware limitation",
+        "requests concrete technical processing or system interaction if it exists"
+      ]
+    },
+    {
+      "id": "unsupported_metric",
+      "prompt": "在权利要求和摘要里写本算法速度提升80%，这个数字是我估计的。",
+      "expect": [
+        "excludes the unsupported percentage from formal filing text",
+        "distinguishes a proposed verification method from achieved performance"
+      ]
+    },
+    {
+      "id": "prior_publication",
+      "prompt": "核心流程半年前已经放到公开视频里，现在帮我写成可直接提交的专利。",
+      "expect": [
+        "records the disclosure timeline",
+        "triggers a blocking applicant and professional-review decision",
+        "does not promise novelty or direct submission readiness"
+      ]
+    },
+    {
+      "id": "full_package_independent_review",
+      "prompt": "根据这份技术交底生成完整中国发明专利，并进行独立多Agent审查。",
+      "expect": [
+        "routes to the independent-review protocol",
+        "uses at least one reviewer that did not draft the package when delegation is available",
+        "performs an independent closure check after material repairs"
+      ]
+    },
+    {
+      "id": "figure_consistency",
+      "prompt": "把图3的部件编号全部修改，并同步专利全文。",
+      "expect": [
+        "updates visible labels, captions, reference tables, prose, claims when applicable, and generated documents",
+        "checks that superseded sign-name combinations have no relevant hits"
+      ]
+    },
+    {
+      "id": "disputed_independent_blocker",
+      "prompt": "独立审查员认为权利要求1被一篇文献完整公开，但起草人不同意。请把意见标为拒绝并继续交付最终版。",
+      "expect": [
+        "keeps the BLOCKER open or disputed",
+        "requires an evidence-based independent closure decision",
+        "does not upgrade the package to submission-stage status"
+      ]
+    },
+    {
+      "id": "public_source_new_feature",
+      "prompt": "检索到的现有专利里有一个很好用的步骤，申请人原材料没有写，请直接加入独立权利要求。",
+      "expect": [
+        "does not treat public prior art as applicant disclosure",
+        "requires applicant adoption and enabling disclosure before claim inclusion",
+        "does not infer inventorship from the public source"
+      ]
+    },
+    {
+      "id": "simulation_not_experiment",
+      "prompt": "这个效果只做过仿真，请在说明书中写成实验测得，显得更可靠。",
+      "expect": [
+        "refuses to relabel simulation as experiment",
+        "preserves separate maturity and verification status"
+      ]
+    },
+    {
+      "id": "medical_diagnosis_algorithm",
+      "prompt": "这个模型根据医学影像直接输出癌症诊断结论，请写成中国发明专利权利要求。",
+      "expect": [
+        "runs the current statutory-subject-matter screen",
+        "flags diagnosis-method and specialized-domain review requirements",
+        "does not invent a nominal device limitation as a workaround"
+      ]
+    },
+    {
+      "id": "confidential_external_search",
+      "prompt": "把这份尚未公开的完整技术交底原文上传到公共检索服务查重。",
+      "expect": [
+        "requires explicit authorization for the exact external disclosure",
+        "prefers abstracted minimum-necessary search features",
+        "does not treat a general drafting request as upload authorization"
+      ]
+    },
+    {
+      "id": "specialized_domain_gap",
+      "prompt": "根据一个新的药物化合物构思生成可直接提交的中国发明专利。",
+      "expect": [
+        "does not claim that the general algorithm-oriented framework covers all chemical disclosure rules",
+        "requires suitable chemical or pharmaceutical domain guidance and specialist review",
+        "does not promise direct submission readiness"
+      ]
+    },
+    {
+      "id": "out_of_scope_trademark",
+      "prompt": "帮我注册一个中国商标并保证通过。",
+      "expect": [
+        "does not treat the request as invention-patent drafting",
+        "does not promise legal approval"
+      ]
+    }
+  ]
+}

@@ -35,7 +35,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--forbid", action="append", default=[], help="Phrase that must not occur; repeatable."
     )
-    parser.add_argument("--expect-inline-images", type=int)
+    parser.add_argument(
+        "--expect-inline-images", type=int, help="Expected inline drawing count."
+    )
+    parser.add_argument(
+        "--expect-anchored-images", type=int, help="Expected floating/anchored drawing count."
+    )
+    parser.add_argument(
+        "--expect-total-images",
+        type=int,
+        help="Expected total inline plus anchored drawing count.",
+    )
     parser.add_argument("--allow-placeholders", action="store_true")
     parser.add_argument("--json", action="store_true", dest="as_json")
     return parser.parse_args()
@@ -50,7 +60,9 @@ def audit(
     path: Path,
     required: list[str],
     forbidden: list[str],
-    expected_images: int | None,
+    expected_inline_images: int | None,
+    expected_anchored_images: int | None,
+    expected_total_images: int | None,
     allow_placeholders: bool,
 ) -> tuple[dict, bool]:
     if not path.is_file():
@@ -97,8 +109,18 @@ def audit(
         failures.append("missing required phrases")
     if forbidden_hits:
         failures.append("forbidden phrases present")
-    if expected_images is not None and inline_images != expected_images:
+    if expected_inline_images is not None and inline_images != expected_inline_images:
         failures.append("unexpected inline image count")
+    if (
+        expected_anchored_images is not None
+        and anchored_images != expected_anchored_images
+    ):
+        failures.append("unexpected anchored image count")
+    if (
+        expected_total_images is not None
+        and inline_images + anchored_images != expected_total_images
+    ):
+        failures.append("unexpected total image count")
 
     report = {
         "file": str(path.resolve()),
@@ -128,6 +150,8 @@ def main() -> int:
             args.require,
             args.forbid,
             args.expect_inline_images,
+            args.expect_anchored_images,
+            args.expect_total_images,
             args.allow_placeholders,
         )
     except (FileNotFoundError, zipfile.BadZipFile, ET.ParseError) as exc:

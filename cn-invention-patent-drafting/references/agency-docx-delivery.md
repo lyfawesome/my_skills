@@ -32,13 +32,13 @@ If the available renderer lacks a required CJK font, distinguish a renderer-envi
 
 ## Structural audit
 
-Use `../scripts/audit_patent_docx.py` from this skill directory, for example:
+From the skill root, use `scripts/audit_patent_docx.py`. From the `references/` directory, the relative path is `../scripts/audit_patent_docx.py`. For example, from the skill root:
 
 ```bash
 python scripts/audit_patent_docx.py final.docx \
-  --expect-inline-images 9 \
-  --require "参数规范转换" \
-  --forbid "规范化、降低和发射"
+  --expect-total-images 9 \
+  --require "具体实施方式" \
+  --forbid "TODO"
 ```
 
 The script checks all Word text parts, including nested table text, because those contents are in `document.xml`. It cannot confirm text drawn into PNG figures; inspect those images separately.
